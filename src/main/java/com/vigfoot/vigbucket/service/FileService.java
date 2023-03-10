@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class FileService {
 
-    @Value("${directory}")
+    @Value("${dir}")
     public String directory;
 
     public List<Bucket.File> getStorage(){
