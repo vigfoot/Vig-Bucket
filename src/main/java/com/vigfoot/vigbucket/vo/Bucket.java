@@ -1,8 +1,12 @@
 package com.vigfoot.vigbucket.vo;
 
+import lombok.Builder;
+
 public class Bucket {
 
-    public static class File {
 
+    @Builder
+    public static class File {
+        private String directory;
     }
 }
