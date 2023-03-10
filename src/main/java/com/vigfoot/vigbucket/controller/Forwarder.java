@@ -21,19 +21,6 @@ public class Forwarder {
     @Value("${dir}")
     public String directory;
 
-    private final FileService fileService;
-
-    @Lazy
-    @PostConstruct
-    void test() {
-        Path path = Paths.get(directory);
-
-        Set<String> fileStoreIterator = path.getFileSystem().supportedFileAttributeViews();
-        for (String s : fileStoreIterator) {
-            System.out.println(s);
-        }
-    }
-
     @GetMapping("/")
     Mono<String> goIndex(Model model) {
 
