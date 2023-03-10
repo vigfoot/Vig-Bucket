@@ -26,9 +26,22 @@ public class FileService {
 
     }
 
-    public List<Bucket.File> getBucket(String directory) {
+    public List<Bucket.File> getBucket(String dir) {
+        File directory = Paths.get(dir).toFile();
 
+        List<Bucket.File> files = new LinkedList<>();
+        if (directory.listFiles() != null) {
+            Arrays.stream(directory.listFiles())
+                    .forEach(file -> {
+                        files.add(Bucket.File.builder()
+                                .name(file.getName())
+                                .isDirectory(file.isDirectory())
+                                .isEmpty(file.listFiles() == null)
+                                .build()
+                        );
+                    });
+        }
 
-        return null;
+        return files;
     }
 }

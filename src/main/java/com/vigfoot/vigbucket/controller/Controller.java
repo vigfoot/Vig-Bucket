@@ -3,10 +3,9 @@ package com.vigfoot.vigbucket.controller;
 import com.vigfoot.vigbucket.service.FileService;
 import com.vigfoot.vigbucket.vo.Bucket;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.io.File;
 import java.util.List;
 
 @RestController
@@ -15,10 +14,8 @@ public class Controller {
 
     private final FileService fileService;
 
-    @PostMapping
-    List<Bucket.File> getBucket(@ModelAttribute String directory) {
+    @PostMapping("/bucket")
+    List<Bucket.File> getBucket(@RequestBody String directory) {
         return fileService.getBucket(directory);
     }
-
-
 }
